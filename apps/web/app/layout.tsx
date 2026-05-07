@@ -1,8 +1,9 @@
 import { DM_Sans, Geist_Mono, Inter } from "next/font/google"
 
-import { ThemeProvider } from "@components"
 import { cn } from "@workspace-lib"
 import "@workspace-styles/globals.css"
+import { ReactNode } from "react"
+import { Providers } from "./providers"
 
 const dmSansHeading = DM_Sans({
   subsets: ["latin"],
@@ -19,7 +20,7 @@ const fontMono = Geist_Mono({
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: ReactNode
 }>) {
   return (
     <html
@@ -34,7 +35,7 @@ export default function RootLayout({
       )}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
