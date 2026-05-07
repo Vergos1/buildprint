@@ -1,14 +1,19 @@
-import { cn } from "@workspace/ui/lib/utils"
-import { Button } from "@workspace/ui/components/button"
-import { Card, CardContent } from "@workspace/ui/components/card"
+import Abstraction from "@public/auth/abstraction-2.png"
+import { links } from "@shared-config"
 import {
+  Button,
+  Card,
+  CardContent,
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
-} from "@workspace/ui/components/field"
-import { Input } from "@workspace/ui/components/input"
+  Input,
+} from "@workspace-components"
+import { cn } from "@workspace-lib"
+import Image from "next/image"
+import Link from "next/link"
 
 export function SignupForm({
   className,
@@ -34,10 +39,6 @@ export function SignupForm({
                   placeholder="m@example.com"
                   required
                 />
-                <FieldDescription>
-                  We&apos;ll use this to contact you. We will not share your
-                  email with anyone else.
-                </FieldDescription>
               </Field>
               <Field>
                 <Field className="grid grid-cols-2 gap-4">
@@ -92,15 +93,17 @@ export function SignupForm({
                 </Button>
               </Field>
               <FieldDescription className="text-center">
-                Already have an account? <a href="#">Sign in</a>
+                Already have an account? <Link href={links.login}>Sign in</Link>
               </FieldDescription>
             </FieldGroup>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+            <Image
+              src={Abstraction}
+              alt="Login illustration"
+              fill
+              priority
+              className="object-cover dark:brightness-[0.8]"
             />
           </div>
         </CardContent>

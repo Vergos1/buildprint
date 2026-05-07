@@ -1,3 +1,5 @@
+import Abstraction from "@public/auth/abstraction-1.png"
+import { links } from "@shared-config"
 import {
   Button,
   Card,
@@ -8,8 +10,10 @@ import {
   FieldLabel,
   FieldSeparator,
   Input,
-} from "@workspace/components"
-import { cn } from "@workspace/lib"
+} from "@workspace-components"
+import { cn } from "@workspace-lib"
+import Image from "next/image"
+import Link from "next/link"
 
 export function LoginForm({
   className,
@@ -84,15 +88,18 @@ export function LoginForm({
                 </Button>
               </Field>
               <FieldDescription className="text-center">
-                Don&apos;t have an account? <a href="#">Sign up</a>
+                Don&apos;t have an account?{" "}
+                <Link href={links.signup}>Sign up</Link>
               </FieldDescription>
             </FieldGroup>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+            <Image
+              src={Abstraction}
+              alt="Login illustration"
+              fill
+              priority
+              className="object-cover dark:brightness-[0.8]"
             />
           </div>
         </CardContent>

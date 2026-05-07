@@ -43,6 +43,7 @@ export const nextJsConfig = [
     settings: { react: { version: "detect" } },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
+      "@next/next/no-img-element": "off",
       // React scope no longer necessary with new JSX transform.
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",

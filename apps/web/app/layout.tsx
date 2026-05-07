@@ -1,8 +1,8 @@
 import { DM_Sans, Geist_Mono, Inter } from "next/font/google"
 
-import { ThemeProvider } from "@/components/theme-provider"
-import "@workspace/ui/globals.css"
-import { cn } from "@workspace/ui/lib/utils"
+import { ThemeProvider } from "@components"
+import { cn } from "@workspace-lib"
+import "@workspace-styles/globals.css"
 
 const dmSansHeading = DM_Sans({
   subsets: ["latin"],

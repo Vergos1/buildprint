@@ -3,9 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@workspace/components": ["../../packages/ui/src/components/index.ts"],
-      "@workspace/lib": ["../../packages/ui/src/lib/index.ts"],
-      "@workspace/hooks": ["../../packages/ui/src/hooks/index.ts"],
+      "@workspace-styles/*": ["../../packages/ui/src/styles/*"],
+      "@workspace-components": ["../../packages/ui/src/components/index.ts"],
+      "@workspace-lib": ["../../packages/ui/src/lib/index.ts"],
+      "@workspace-hooks": ["../../packages/ui/src/hooks/index.ts"],
+
+      "@public/*": ["./public/*"],
 
       "@components": ["./components/index.ts"],
       "@components/*": ["./components/*"],
