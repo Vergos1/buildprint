@@ -4,7 +4,14 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@workspace/ui/*": ["../../packages/ui/src/*"]
+
+      "@workspace/ui/*": ["../../packages/ui/src/*"],
+
+      "@features": ["src/features/index.ts"],
+      "@features/*": ["src/features/*"],
+
+      "@shared-config": ["src/config/index.ts"],
+      "@shared-config/*": ["src/config/*"]
     },
     "plugins": [
       {
