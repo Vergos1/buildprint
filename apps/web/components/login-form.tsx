@@ -1,5 +1,5 @@
 import Abstraction from "@public/auth/abstraction-1.png"
-import { links } from "@shared-config"
+import { appConfig, links } from "@shared-config"
 import {
   Button,
   Card,
@@ -28,7 +28,7 @@ export function LoginForm({
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Welcome back</h1>
                 <p className="text-balance text-muted-foreground">
-                  Login to your Acme Inc account
+                  Login to your {appConfig.name} account
                 </p>
               </div>
               <Field>
