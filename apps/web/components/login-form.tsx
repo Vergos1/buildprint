@@ -10,7 +10,7 @@ import {
   FieldLabel,
   Input,
 } from "@workspace-components"
-import { appConfig } from "@workspace-config"
+import { appConfig } from "@workspace-config/app"
 import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
