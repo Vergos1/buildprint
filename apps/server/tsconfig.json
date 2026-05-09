@@ -4,12 +4,15 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "types": ["node"],
+    "rootDir": "../../",
     "outDir": "./dist",
-    "rootDir": "./src",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "paths": {
+      "@workspace/config/*": ["../../packages/config/src/*"]
+    }
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "../../packages/config/src/**/*.ts"],
   "exclude": ["node_modules", "dist", "test", "**/*.spec.ts"]
 }

@@ -3,7 +3,9 @@
   "compilerOptions": {
     "declaration": false,
     "declarationMap": false,
-    "noEmit": false
+    "noEmit": false,
+    "outDir": "./dist",
+    "rootDir": "../../"
   },
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }

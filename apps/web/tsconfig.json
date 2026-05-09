@@ -7,6 +7,8 @@
       "@workspace-components": ["../../packages/ui/src/components/index.ts"],
       "@workspace-lib": ["../../packages/ui/src/lib/index.ts"],
       "@workspace-hooks": ["../../packages/ui/src/hooks/index.ts"],
+      "@workspace-types": ["../../packages/types/index.ts"],
+      "@workspace-config": ["../../packages/config/src/index.ts"],
 
       "@public/*": ["./public/*"],
 
@@ -30,7 +32,8 @@
     "next.config.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "../../packages/config/src/app.ts"
   ],
   "exclude": ["node_modules"]
 }

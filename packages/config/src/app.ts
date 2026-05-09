@@ -4,4 +4,4 @@ export const appConfig = {
 
   // Contact information
   email: "ihoryanchuk199@gmail.com",
-} as const
+}
