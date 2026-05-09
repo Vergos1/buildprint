@@ -1,0 +1,10 @@
+{
+  "name": "@workspace/config",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    "./app": "./src/app.ts"
+  }
+}
