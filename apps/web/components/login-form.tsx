@@ -1,5 +1,5 @@
 import Abstraction from "@public/auth/abstraction-1.png"
-import { appConfig, links } from "@shared-config"
+import { links } from "@shared-config"
 import {
   Button,
   Card,
@@ -10,6 +10,7 @@ import {
   FieldLabel,
   Input,
 } from "@workspace-components"
+import { appConfig } from "@workspace-config"
 import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
