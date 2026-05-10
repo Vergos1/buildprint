@@ -37,8 +37,8 @@ export class UsersController {
   @Roles(ROLE.ADMIN)
   @ApiBearerAuth()
   @ApiCreatedResponse({ type: UserEntity })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiForbiddenResponse({ description: 'Forbidden: Admins only' })
+  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   async create(@Body() createUserDto: CreateUserDto) {
     return new UserEntity(await this.usersService.create(createUserDto));
   }
