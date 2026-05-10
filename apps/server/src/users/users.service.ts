@@ -1,11 +1,10 @@
 // src/users/users.service.ts
 import { BadRequestException, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
+import { ROUNDS_OF_HASHING } from '../common/constants/auth.constants';
+import { CreateUserDto } from '../common/dto/create-user.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-
-export const roundsOfHashing = 10;
 
 @Injectable()
 export class UsersService {
@@ -22,7 +21,7 @@ export class UsersService {
 
     const hashedPassword = await bcrypt.hash(
       createUserDto.password,
-      roundsOfHashing,
+      ROUNDS_OF_HASHING,
     );
 
     return this.prisma.user.create({
@@ -45,7 +44,7 @@ export class UsersService {
     if (updateUserDto.password) {
       updateUserDto.password = await bcrypt.hash(
         updateUserDto.password,
-        roundsOfHashing,
+        ROUNDS_OF_HASHING,
       );
     }
 

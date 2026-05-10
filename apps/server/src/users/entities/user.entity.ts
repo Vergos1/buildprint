@@ -7,20 +7,20 @@ export class UserEntity implements User {
     Object.assign(this, partial);
   }
 
-  @ApiProperty()
+  @ApiProperty({ example: 1 })
   id!: number;
 
-  @ApiProperty()
-  createdAt!: Date;
+  @ApiProperty({ example: 'user@gmail.com' })
+  email!: string;
 
-  @ApiProperty()
-  updatedAt!: Date;
-
-  @ApiProperty()
+  @ApiProperty({ example: 'Ivan', nullable: true })
   name!: string | null;
 
-  @ApiProperty()
-  email!: string;
+  @ApiProperty({ example: '2024-01-01T00:00:00.000Z' })
+  createdAt!: Date;
+
+  @ApiProperty({ example: '2024-01-01T00:00:00.000Z' })
+  updatedAt!: Date;
 
   @Exclude()
   password!: string;
