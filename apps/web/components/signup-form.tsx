@@ -13,6 +13,7 @@ import {
 import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
+import { PrivacyBlock } from "./privacy-block"
 
 export function SignupForm({
   className,
@@ -25,42 +26,51 @@ export function SignupForm({
           <form className="p-6 md:p-8">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h1 className="text-2xl font-bold">Create your account</h1>
+                <h1 className="text-2xl font-bold">Реєстрація</h1>
                 <p className="text-sm text-balance text-muted-foreground">
-                  Enter your email below to create your account
+                  Введіть дані нижче, щоб створити новий акаунт
                 </p>
               </div>
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <FieldLabel htmlFor="name">Ім&apos;я</FieldLabel>
+                <Input
+                  id="name"
+                  type="name"
+                  placeholder="Іван Петренко"
+                  required
+                />
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="email">Електронна пошта</FieldLabel>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="ivan@gmail.com"
                   required
                 />
               </Field>
               <Field>
                 <Field className="grid grid-cols-2 gap-4">
                   <Field>
-                    <FieldLabel htmlFor="password">Password</FieldLabel>
+                    <FieldLabel htmlFor="password">Пароль</FieldLabel>
                     <Input id="password" type="password" required />
                   </Field>
                   <Field>
                     <FieldLabel htmlFor="confirm-password">
-                      Confirm Password
+                      Повторіть пароль
                     </FieldLabel>
                     <Input id="confirm-password" type="password" required />
                   </Field>
                 </Field>
                 <FieldDescription>
-                  Must be at least 8 characters long.
+                  Пароль має містити щонайменше 8 символів.
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">Create Account</Button>
+                <Button type="submit">Зареєструватись</Button>
               </Field>
               <FieldDescription className="text-center">
-                Already have an account? <Link href={links.login}>Sign in</Link>
+                Вже є акаунт? <Link href={links.login}>Увійти</Link>
               </FieldDescription>
             </FieldGroup>
           </form>
@@ -75,10 +85,7 @@ export function SignupForm({
           </div>
         </CardContent>
       </Card>
-      <FieldDescription className="px-6 text-center">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
-      </FieldDescription>
+      <PrivacyBlock className="px-6" />
     </div>
   )
 }

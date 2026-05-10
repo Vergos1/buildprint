@@ -14,6 +14,7 @@ import { appConfig } from "@workspace-config/app"
 import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
+import { PrivacyBlock } from "./privacy-block"
 
 export function LoginForm({
   className,
@@ -71,10 +72,7 @@ export function LoginForm({
           </div>
         </CardContent>
       </Card>
-      <FieldDescription className="px-6 text-center">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
-      </FieldDescription>
+      <PrivacyBlock className="px-6" />
     </div>
   )
 }
