@@ -27,23 +27,23 @@ export function LoginForm({
           <form className="p-6 md:p-8">
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
-                <h1 className="text-2xl font-bold">Welcome back</h1>
+                <h1 className="text-2xl font-bold">Вхід</h1>
                 <p className="text-balance text-muted-foreground">
-                  Login to your {appConfig.name} account
+                  Раді бачити вас знову у {appConfig.name}
                 </p>
               </div>
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <FieldLabel htmlFor="email">Електронна пошта</FieldLabel>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder="ivan@gmail.com"
                   required
                 />
               </Field>
               <Field>
                 <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
+                  <FieldLabel htmlFor="password">Пароль</FieldLabel>
                 </div>
                 <Input
                   id="password"
@@ -53,11 +53,11 @@ export function LoginForm({
                 />
               </Field>
               <Field>
-                <Button type="submit">Login</Button>
+                <Button type="submit">Увійти</Button>
               </Field>
               <FieldDescription className="text-center">
-                Don&apos;t have an account?{" "}
-                <Link href={links.signup}>Sign up</Link>
+                Ще не зареєстровані?{" "}
+                <Link href={links.signup}>Створити акаунт</Link>
               </FieldDescription>
             </FieldGroup>
           </form>
