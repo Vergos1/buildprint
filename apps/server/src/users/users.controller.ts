@@ -35,19 +35,19 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  @ApiOperation({ summary: 'User registration' })
+  @ApiOperation({ summary: 'Створити користувача (тільки для адміністратора)' })
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(ROLE.ADMIN)
   @ApiBearerAuth()
   @ApiCreatedResponse({ type: UserEntity })
-  @ApiForbiddenResponse({ description: 'Forbidden: Admins only' })
-  @ApiUnauthorizedResponse({ description: 'Unauthorized' })
+  @ApiForbiddenResponse({ description: 'Доступ заборонено: тільки адміни' })
+  @ApiUnauthorizedResponse({ description: 'Не авторизований' })
   async create(@Body() createUserDto: CreateUserDto) {
     return new UserEntity(await this.usersService.create(createUserDto));
   }
 
   @Get()
-  @ApiOperation({ summary: 'Get all users' })
+  @ApiOperation({ summary: 'Отримати всіх користувачів' })
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOkResponse({ type: UserEntity, isArray: true })
@@ -57,23 +57,24 @@ export class UsersController {
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Get user by id' })
+  @ApiOperation({ summary: 'Отримати користувача за id' })
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOkResponse({ type: UserEntity })
-  @ApiNotFoundResponse({ description: 'User not found' })
+  @ApiNotFoundResponse({ description: 'Користувача не знайдено' })
   async findOne(@Param('id', ParseIntPipe) id: number) {
     const user = await this.usersService.findOne(id);
-    if (!user) throw new NotFoundException(`User with id ${id} not found`);
+    if (!user)
+      throw new NotFoundException(`Користувача з id ${id} не знайдено`);
     return new UserEntity(user);
   }
 
   @Patch(':id')
-  @ApiOperation({ summary: 'Update user by id' })
+  @ApiOperation({ summary: 'Оновити користувача за id' })
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOkResponse({ type: UserEntity })
-  @ApiNotFoundResponse({ description: 'User not found' })
+  @ApiNotFoundResponse({ description: 'Користувача не знайдено' })
   async update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateUserDto: UpdateUserDto,
@@ -82,11 +83,11 @@ export class UsersController {
   }
 
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete user by id' })
+  @ApiOperation({ summary: 'Видалити користувача за id' })
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @ApiOkResponse({ type: UserEntity })
-  @ApiNotFoundResponse({ description: 'User not found' })
+  @ApiNotFoundResponse({ description: 'Користувача не знайдено' })
   async remove(@Param('id', ParseIntPipe) id: number) {
     return new UserEntity(await this.usersService.remove(id));
   }

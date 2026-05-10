@@ -23,21 +23,21 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('login')
-  @ApiOperation({ summary: 'User login' })
+  @ApiOperation({ summary: 'Вхід користувача' })
   @ApiBody({ type: AuthDto })
   @ApiOkResponse({ type: AuthEntity })
-  @ApiNotFoundResponse({ description: 'No user found for this email' })
-  @ApiUnauthorizedResponse({ description: 'Invalid password' })
-  @ApiBadRequestResponse({ description: 'Invalid input data' })
+  @ApiNotFoundResponse({ description: 'Користувача з таким email не знайдено' })
+  @ApiUnauthorizedResponse({ description: 'Невірний пароль' })
+  @ApiBadRequestResponse({ description: 'Невірні вхідні дані' })
   login(@Body() { email, password }: AuthDto) {
     return this.authService.login({ email, password });
   }
 
   @Post('register')
-  @ApiOperation({ summary: 'User registration' })
+  @ApiOperation({ summary: 'Реєстрація користувача' })
   @ApiCreatedResponse({ type: AuthEntity })
-  @ApiConflictResponse({ description: 'User already registered' })
-  @ApiBadRequestResponse({ description: 'Invalid data' })
+  @ApiConflictResponse({ description: 'Користувач вже зареєстрований' })
+  @ApiBadRequestResponse({ description: 'Невірні дані' })
   register(@Body() { name, email, password }: CreateUserDto) {
     return this.authService.register({ name, email, password });
   }
