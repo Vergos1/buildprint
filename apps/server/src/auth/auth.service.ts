@@ -29,7 +29,9 @@ export class AuthService {
 
     // If no user is found, throw an error
     if (!user) {
-      throw new NotFoundException(`No user found for email: ${authDto.email}`);
+      throw new NotFoundException(
+        `Користувача з поштою ${authDto.email} не знайдено`,
+      );
     }
 
     // Step 2: Check if the password is correct
@@ -40,7 +42,7 @@ export class AuthService {
 
     // If password does not match, throw an error
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid password');
+      throw new UnauthorizedException('Невірний пароль');
     }
 
     // Step 3: Generate a JWT token containing the user's ID and return it
@@ -56,7 +58,7 @@ export class AuthService {
     });
 
     if (existingUser) {
-      throw new BadRequestException('User already registered');
+      throw new BadRequestException('Акаунт з таким email вже існує');
     }
 
     const hashedPassword = await bcrypt.hash(
