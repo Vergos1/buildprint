@@ -16,7 +16,7 @@ export class UsersService {
     });
 
     if (existingUser) {
-      throw new BadRequestException('User already registered');
+      throw new BadRequestException('Акаунт з таким email вже існує');
     }
 
     const hashedPassword = await bcrypt.hash(
