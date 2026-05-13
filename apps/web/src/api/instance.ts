@@ -68,7 +68,6 @@ instance.interceptors.request.use(
   async (config) => {
     const result: InternalAxiosRequestConfig = { ...config }
     const headers = result.headers!
-    headers["Accept-Language"] = "en"
 
     const session = await auth()
 
