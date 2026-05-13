@@ -1,17 +1,6 @@
 import { AxiosHeaders, RawAxiosRequestHeaders } from "axios"
-import { auth } from "src/shared/lib"
 import { instance } from "./instance"
 
-// Interceptors
-instance.interceptors.request.use(async (config) => {
-  const session = await auth()
-  if (session?.accessToken) {
-    config.headers.Authorization = `Bearer ${session.accessToken}`
-  }
-  return config
-})
-
-// Methods
 export function getData<TResp, TParams = void>(
   path: string,
   params?: TParams,
