@@ -1,5 +1,5 @@
+import { authApi } from "@features/auth/api"
 import { AuthResponse, AuthUser } from "@workspace-types/auth"
-import axios from "axios"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
@@ -16,18 +16,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
 
       async authorize(credentials): Promise<AuthUser | null> {
-        const { data } = await axios.post<AuthResponse>("/auth/login", {
-          email: credentials?.email,
-          password: credentials?.password,
-        })
+        const { email, password } = credentials as Record<string, string>
 
-        if (!data?.user || !data?.accessToken) return null
+        if (!email || !password) return null
 
-        return {
-          id: data.user.id,
-          email: data.user.email,
-          name: data.user.name,
-          accessToken: data.accessToken,
+        try {
+          const { data } = await authApi.login({ email, password })
+          return {
+            id: data.user.id,
+            email: data.user.email,
+            name: data.user.name,
+            accessToken: data.accessToken,
+          }
+        } catch {
+          return null
         }
       },
     }),
