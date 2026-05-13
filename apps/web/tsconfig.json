@@ -10,7 +10,7 @@
       "@workspace-components": ["../../packages/ui/src/components/index.ts"],
       "@workspace-lib": ["../../packages/ui/src/lib/index.ts"],
       "@workspace-hooks": ["../../packages/ui/src/hooks/index.ts"],
-      "@workspace-types": ["../../packages/types/index.ts"],
+      "@workspace-types/*": ["../../packages/types/src/*"],
       "@workspace-config/*": ["../../packages/config/src/*"],
 
       "@public/*": ["./public/*"],

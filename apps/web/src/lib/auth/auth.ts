@@ -1,10 +1,7 @@
+import { AuthResponse, AuthUser } from "@workspace-types/auth"
 import axios from "axios"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
-import {
-  AuthResponse,
-  AuthUser,
-} from "./../../../../../packages/types/src/auth"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: {
