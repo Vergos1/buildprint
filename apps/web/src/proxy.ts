@@ -1,4 +1,4 @@
-import { auth } from "@lib"
+import { auth } from "src/shared/lib"
 
 export default auth((req) => {
   if (!req.auth) {

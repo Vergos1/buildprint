@@ -12,7 +12,7 @@ import {
 import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
-import { links } from "src/config"
+import { links } from "src/shared/config"
 import { PrivacyBlock } from "./privacy-block"
 
 export function SignupForm({

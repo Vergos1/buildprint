@@ -3,7 +3,7 @@
   "compilerOptions": {
     "declaration": false,
     "declarationMap": false,
-    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "typeRoots": ["src/shared/types", "./node_modules/@types"],
     "baseUrl": ".",
     "paths": {
       "@workspace-styles/*": ["../../packages/ui/src/styles/*"],
@@ -18,17 +18,17 @@
       "@components": ["src/components/index.ts"],
       "@components/*": ["src/components/*"],
 
-      "@lib": ["src/lib/index.ts"],
-      "@lib/*": ["src/lib/*"],
+      "@lib": ["src/shared/lib/index.ts"],
+      "@lib/*": ["src/shared/lib/*"],
 
-      "@utils": ["src/utils/index.ts"],
-      "@utils/*": ["src/utils/*"],
+      "@utils": ["src/shared/utils/index.ts"],
+      "@utils/*": ["src/shared/utils/*"],
 
       "@features": ["./features/index.ts"],
       "@features/*": ["./features/*"],
 
-      "@shared-config": ["src/config/index.ts"],
-      "@shared-config/*": ["src/config/*"]
+      "@shared-config": ["src/shared/config/index.ts"],
+      "@shared-config/*": ["src/shared/config/*"]
     },
     "plugins": [
       {
