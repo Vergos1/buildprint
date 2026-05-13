@@ -1,4 +1,5 @@
 import { auth } from "@lib"
+import { handleApiError } from "@utils"
 import axios, {
   AxiosHeaders,
   InternalAxiosRequestConfig,
@@ -70,10 +71,9 @@ instance.interceptors.request.use(
     headers["Accept-Language"] = "en"
 
     const session = await auth()
-    const token = session.accessToken
 
-    if (token) {
-      headers.Authorization = `Bearer ${token}`
+    if (session) {
+      headers.Authorization = `Bearer ${session.accessToken}`
     }
 
     return result
