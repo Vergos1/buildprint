@@ -1,5 +1,4 @@
 import Abstraction from "@public/auth/abstraction-2.png"
-import { links } from "@shared-config"
 import {
   Button,
   Card,
@@ -13,6 +12,7 @@ import {
 import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
+import { links } from "src/config"
 import { PrivacyBlock } from "./privacy-block"
 
 export function SignupForm({

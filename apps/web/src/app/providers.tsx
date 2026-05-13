@@ -1,6 +1,5 @@
 "use client"
 
-import { ThemeProvider } from "@components"
 import {
   environmentManager,
   QueryClient,
@@ -8,6 +7,7 @@ import {
 } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import type { ReactNode } from "react"
+import { ThemeProvider } from "src/components"
 
 function makeQueryClient() {
   return new QueryClient({

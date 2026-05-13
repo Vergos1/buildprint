@@ -15,8 +15,10 @@
     "@tanstack/react-query": "^5.100.9",
     "@tanstack/react-query-devtools": "^5.100.9",
     "@workspace/ui": "*",
+    "axios": "^1.16.0",
     "lucide-react": "^1.14.0",
     "next": "16.1.6",
+    "next-auth": "^4.18.10",
     "next-themes": "^0.4.6",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
