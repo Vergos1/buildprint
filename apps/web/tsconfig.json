@@ -6,29 +6,35 @@
     "typeRoots": ["src/shared/types", "./node_modules/@types"],
     "baseUrl": ".",
     "paths": {
-      "@workspace-styles/*": ["../../packages/ui/src/styles/*"],
-      "@workspace-components": ["../../packages/ui/src/components/index.ts"],
-      "@workspace-lib": ["../../packages/ui/src/lib/index.ts"],
-      "@workspace-hooks": ["../../packages/ui/src/hooks/index.ts"],
-      "@workspace-types/*": ["../../packages/types/src/*"],
-      "@workspace-config/*": ["../../packages/config/src/*"],
-
       "@public/*": ["./public/*"],
 
       "@components": ["src/components/index.ts"],
       "@components/*": ["src/components/*"],
 
-      "@lib": ["src/shared/lib/index.ts"],
-      "@lib/*": ["src/shared/lib/*"],
+      "@features": ["src/features/index.ts"],
+      "@features/*": ["src/features/*"],
 
-      "@utils": ["src/shared/utils/index.ts"],
-      "@utils/*": ["src/shared/utils/*"],
+      "@api": ["src/api/index.ts"],
+      "@api/*": ["src/api/*"],
 
-      "@features": ["./features/index.ts"],
-      "@features/*": ["./features/*"],
+      "@shared-lib": ["src/shared/lib/index.ts"],
+      "@shared-lib/*": ["src/shared/lib/*"],
+
+      "@shared-utils": ["src/shared/utils/index.ts"],
+      "@shared-utils/*": ["src/shared/utils/*"],
+
+      "@shared-hooks": ["src/shared/hooks/index.ts"],
+      "@shared-hooks/*": ["src/shared/hooks/*"],
 
       "@shared-config": ["src/shared/config/index.ts"],
-      "@shared-config/*": ["src/shared/config/*"]
+      "@shared-config/*": ["src/shared/config/*"],
+
+      "@workspace-styles/*": ["../../packages/ui/src/styles/*"],
+      "@workspace-components": ["../../packages/ui/src/components/index.ts"],
+      "@workspace-lib": ["../../packages/ui/src/lib/index.ts"],
+      "@workspace-hooks": ["../../packages/ui/src/hooks/index.ts"],
+      "@workspace-types/*": ["../../packages/types/src/*"],
+      "@workspace-config/*": ["../../packages/config/src/*"]
     },
     "plugins": [
       {
