@@ -1,4 +1,5 @@
 "use client"
+import { useAuth } from "@features/auth/hooks/use-auth"
 import Abstraction from "@public/auth/abstraction-1.png"
 import {
   Button,
@@ -15,7 +16,6 @@ import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
-import useAuth from "src/features/auth/hooks/useAuth"
 import { links } from "src/shared/config"
 import { PrivacyBlock } from "./privacy-block"
 
@@ -23,7 +23,7 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { handleLogin } = useAuth()
+  const { login } = useAuth()
   const [errors, setErrors] = useState<{ email?: string; password?: string }>(
     {}
   )
@@ -66,7 +66,7 @@ export function LoginForm({
     setIsLoading(true)
 
     try {
-      await handleLogin({ email, password })
+      await login({ email, password })
     } finally {
       setIsLoading(false)
     }
