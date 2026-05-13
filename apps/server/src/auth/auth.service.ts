@@ -2,6 +2,7 @@
 import {
   BadRequestException,
   Injectable,
+  Logger,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -9,6 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ROUNDS_OF_HASHING } from '../common/constants/auth.constants';
 import { CreateUserDto } from '../common/dto/create-user.dto';
+import { UserPublicEntity } from '../users/entities/user-public.entity';
 import { UserEntity } from '../users/entities/user.entity';
 import { PrismaService } from './../prisma/prisma.service';
 import { AuthDto } from './dto/auth.dto';
@@ -27,6 +29,7 @@ export class AuthService {
       where: { email: authDto.email },
     });
 
+    Logger.log(user);
     // If no user is found, throw an error
     if (!user) {
       throw new NotFoundException(
@@ -48,7 +51,12 @@ export class AuthService {
     // Step 3: Generate a JWT token containing the user's ID and return it
     return {
       accessToken: this.jwtService.sign({ userId: user.id }),
-      user: new UserEntity(user),
+      user: new UserPublicEntity({
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        createdAt: user.createdAt,
+      }),
     };
   }
 

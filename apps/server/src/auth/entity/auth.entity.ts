@@ -1,10 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { UserEntity } from '../../users/entities/user.entity';
-
+import { UserPublicEntity } from '../../users/entities/user-public.entity';
 export class AuthEntity {
   @ApiProperty({ example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...' })
   accessToken!: string;
 
-  @ApiProperty({ type: UserEntity })
-  user!: UserEntity;
+  @ApiProperty({ type: UserPublicEntity })
+  user!: UserPublicEntity;
 }
