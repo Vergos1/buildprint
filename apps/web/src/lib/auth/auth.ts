@@ -1,6 +1,10 @@
 import axios from "axios"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
+import {
+  AuthResponse,
+  AuthUser,
+} from "./../../../../../packages/types/src/auth"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: {
@@ -14,11 +18,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: {},
       },
 
-      async authorize(credentials) {
-        const { data } = await axios.post("http://localhost:3001/auth/login", {
-          email: credentials?.email,
-          password: credentials?.password,
-        })
+      async authorize(credentials): Promise<AuthUser | null> {
+        const { data } = await axios.post<AuthResponse>(
+          "http://localhost:3001/auth/login",
+          {
+            email: credentials?.email,
+            password: credentials?.password,
+          }
+        )
 
         if (!data?.user || !data?.accessToken) return null
 
@@ -36,16 +43,26 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     jwt({ token, user }) {
       if (user) {
         token.accessToken = user.accessToken
-        token.user = user
+
+        token.user = {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+        }
       }
 
       return token
     },
 
     session({ session, token }) {
-      session.user = token.user as any
-      session.accessToken = token.accessToken as string
-      return session
+      return {
+        ...session,
+        accessToken: token.accessToken as string,
+        user: {
+          ...session.user,
+          ...(token.user as { id: string; email: string; name: string | null }),
+        },
+      }
     },
   },
 })
