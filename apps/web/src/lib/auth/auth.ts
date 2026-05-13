@@ -16,13 +16,10 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
 
       async authorize(credentials): Promise<AuthUser | null> {
-        const { data } = await axios.post<AuthResponse>(
-          "http://localhost:3001/auth/login",
-          {
-            email: credentials?.email,
-            password: credentials?.password,
-          }
-        )
+        const { data } = await axios.post<AuthResponse>("/auth/login", {
+          email: credentials?.email,
+          password: credentials?.password,
+        })
 
         if (!data?.user || !data?.accessToken) return null
 
