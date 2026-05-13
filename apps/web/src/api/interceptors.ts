@@ -1,4 +1,4 @@
-import { auth } from "src/shared/lib"
+import { auth } from "@shared-lib"
 import { instance } from "./instance"
 
 instance.interceptors.request.use(async (config) => {

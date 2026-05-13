@@ -1,3 +1,3 @@
 import "./interceptors"
+export { apiClient } from "./client"
 export { instance } from "./instance"
-export * from "./methods"
