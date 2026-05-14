@@ -12,11 +12,13 @@ import {
   FieldGroup,
   FieldLabel,
   Input,
+  MessageBlock,
 } from "@workspace-components"
 import { appConfig } from "@workspace-config/app"
 import { cn } from "@workspace-lib"
 import Image from "next/image"
 import Link from "next/link"
+import { Activity } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { links } from "src/shared/config"
 import { PrivacyBlock } from "../../../components/privacy-block"
@@ -37,11 +39,21 @@ export function LoginForm({
     },
   })
 
+  const onSubmit = async (dto: LoginSchema) => {
+    try {
+      await login(dto)
+    } catch (error) {
+      form.setError("root", {
+        message: error instanceof Error ? error.message : "Помилка входу",
+      })
+    }
+  }
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
-          <form className="p-6 md:p-8" onSubmit={form.handleSubmit(login)}>
+          <form className="p-6 md:p-8" onSubmit={form.handleSubmit(onSubmit)}>
             <FieldGroup>
               <div className="flex flex-col items-center gap-2 text-center">
                 <h1 className="text-2xl font-bold">Вхід</h1>
@@ -49,6 +61,13 @@ export function LoginForm({
                   Раді бачити вас знову у {appConfig.name}
                 </p>
               </div>
+
+              {form.formState.errors.root && (
+                <MessageBlock>
+                  {form.formState.errors.root.message}
+                </MessageBlock>
+              )}
+
               <Controller
                 name="email"
                 control={form.control}
@@ -91,7 +110,6 @@ export function LoginForm({
                   </Field>
                 )}
               />
-
               <Field>
                 <Button type="submit">Увійти</Button>
               </Field>
