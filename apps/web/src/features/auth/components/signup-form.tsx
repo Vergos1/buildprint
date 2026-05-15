@@ -39,7 +39,8 @@ export function SignupForm({
   })
 
   const onSubmit = (dto: RegisterSchema) => {
-    register(dto)
+    const { name, email, password } = dto
+    register({ name, email, password })
   }
 
   return (
@@ -56,7 +57,9 @@ export function SignupForm({
               </div>
 
               {error && (
-                <MessageBlock>{error.response?.data?.message}</MessageBlock>
+                <MessageBlock>
+                  {error.response?.data?.message ?? "Помилка реєстрації"}
+                </MessageBlock>
               )}
 
               <Controller
