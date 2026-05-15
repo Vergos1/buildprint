@@ -1,5 +1,4 @@
 import { authApi } from "@features/auth/api"
-import { getAuthError } from "@features/auth/utils"
 import { AuthUser } from "@workspace-types/auth"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
@@ -21,16 +20,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         if (!email || !password) return null
 
-        try {
-          const { data } = await authApi.login({ email, password })
-          return {
-            id: data.user.id,
-            email: data.user.email,
-            name: data.user.name,
-            accessToken: data.accessToken,
-          }
-        } catch (error) {
-          throw new Error(getAuthError(error))
+        const { data } = await authApi.login({ email, password })
+        return {
+          id: data.user.id,
+          email: data.user.email,
+          name: data.user.name,
+          accessToken: data.accessToken,
         }
       },
     }),
