@@ -1,8 +1,8 @@
-import { signIn, signOut } from "next-auth/react"
+import { signIn, type SignInResponse, signOut } from "next-auth/react"
 import type { LoginDto } from "../types"
 
 export const authService = {
-  login: async (dto: LoginDto) => {
+  login: async (dto: LoginDto): Promise<SignInResponse> => {
     const result = await signIn("credentials", {
       ...dto,
       redirect: false,
@@ -10,7 +10,7 @@ export const authService = {
     if (result?.error) throw new Error("Невірний email або пароль")
     return result
   },
-  logout: async () => {
+  logout: async (): Promise<void> => {
     await signOut({ redirect: false })
   },
 }
