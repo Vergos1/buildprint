@@ -1,5 +1,5 @@
-import { authApi } from "@features/auth/api"
-import { AuthUser } from "@workspace-types/auth"
+import { AuthResponse, AuthUser } from "@workspace-types/auth"
+import axios from "axios"
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
@@ -20,7 +20,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         if (!email || !password) return null
 
-        const { data } = await authApi.login({ email, password })
+        const { data } = await axios.post<AuthResponse>(
+          `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+          { email, password }
+        )
+
         return {
           id: data.user.id,
           email: data.user.email,
