@@ -1,13 +1,15 @@
 "use client"
 
-import { signIn, signOut } from "next-auth/react"
+import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { LoginDto } from "../types"
 
-export function useAuth() {
+type LoginFn = (dto: LoginDto) => Promise<void>
+
+export function useLogin(): LoginFn {
   const router = useRouter()
 
-  const login = async (dto: LoginDto) => {
+  const login = async (dto: LoginDto): Promise<void> => {
     const result = await signIn("credentials", {
       ...dto,
       redirect: false,
@@ -21,11 +23,5 @@ export function useAuth() {
     router.refresh()
   }
 
-  const logout = async () => {
-    await signOut({ redirect: false })
-    router.push("/login")
-    router.refresh()
-  }
-
-  return { login, logout }
+  return login
 }

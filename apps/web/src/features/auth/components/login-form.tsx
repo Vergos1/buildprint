@@ -1,5 +1,4 @@
 "use client"
-import { useAuth } from "@features/auth/hooks/use-auth"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Abstraction from "@public/auth/abstraction-1.png"
 import {
@@ -22,6 +21,8 @@ import Link from "next/link"
 import { Controller, useForm } from "react-hook-form"
 import { links } from "src/shared/config"
 import { PrivacyBlock } from "../../../components/privacy-block"
+import { useLogin } from "../hooks/use-login"
+import { useLogout } from "../hooks/use-logout"
 import type { LoginSchema } from "../schema"
 import { loginSchema } from "../schema"
 
@@ -29,7 +30,8 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { login, logout } = useAuth()
+  const login = useLogin()
+  const logout = useLogout()
   const { status } = useSession()
 
   const form = useForm<LoginSchema>({
