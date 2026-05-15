@@ -9,5 +9,5 @@ export const authApi = {
     apiClient.post<LoginDto, AuthResponse>(`${BASE_URL}/login`, dto),
 
   register: (dto: RegisterDto) =>
-    apiClient.post<RegisterDto, AuthResponse>(`${BASE_URL}/register`, dto),
+    apiClient.post<RegisterDto, null>(`${BASE_URL}/register`, dto),
 }
