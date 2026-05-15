@@ -60,7 +60,7 @@ export class AuthService {
     };
   }
 
-  async register(createUserDto: CreateUserDto): Promise<AuthEntity> {
+  async register(createUserDto: CreateUserDto): Promise<void> {
     const existingUser = await this.prisma.user.findUnique({
       where: { email: createUserDto.email },
     });
@@ -74,16 +74,11 @@ export class AuthService {
       ROUNDS_OF_HASHING,
     );
 
-    const user = await this.prisma.user.create({
+    await this.prisma.user.create({
       data: {
         ...createUserDto,
         password: hashedPassword,
       },
     });
-
-    return {
-      accessToken: this.jwtService.sign({ userId: user.id }),
-      user: new UserEntity(user),
-    };
   }
 }
