@@ -2,7 +2,7 @@
 
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
-import { LoginDto } from "../types"
+import type { LoginDto } from "../types"
 
 type LoginFn = (dto: LoginDto) => Promise<void>
 
