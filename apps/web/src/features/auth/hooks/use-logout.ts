@@ -10,7 +10,7 @@ export function useLogout(): LogoutFn {
   const router = useRouter()
 
   const logout = async (): Promise<void> => {
-    authService.logout()
+    await authService.logout()
     router.push("/login")
     router.refresh()
   }
