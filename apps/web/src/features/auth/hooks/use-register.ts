@@ -2,7 +2,7 @@ import { MUTATION_KEYS } from "@shared-config/query-keys"
 import { useMutation } from "@tanstack/react-query"
 import { AxiosError } from "axios"
 import { useRouter } from "next/navigation"
-import { ApiErrorResponse } from "src/shared/types/error"
+import { ApiErrorResponse } from "src/shared/types/api-error"
 import { authApi } from "../api"
 
 export function useRegister() {
