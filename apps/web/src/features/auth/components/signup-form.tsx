@@ -26,7 +26,7 @@ export function SignupForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { mutate: register, isPending, error } = useRegister()
+  const { register, isPending, error } = useRegister()
 
   const form = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
@@ -38,9 +38,9 @@ export function SignupForm({
     },
   })
 
-  const onSubmit = (dto: RegisterSchema) => {
+  const onSubmit = async (dto: RegisterSchema) => {
     const { name, email, password } = dto
-    register({ name, email, password })
+    await register({ name, email, password })
   }
 
   return (
