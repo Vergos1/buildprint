@@ -45,7 +45,7 @@ export function LoginForm({
       await login(dto)
     } catch (error) {
       form.setError("root", {
-        message: error instanceof Error ? error.message : "Помилка входу",
+        message: "Помилка входу",
       })
     }
   }
