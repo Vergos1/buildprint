@@ -1,6 +1,8 @@
 import { MUTATION_KEYS } from "@shared-config/query-keys"
 import { useMutation } from "@tanstack/react-query"
+import { AxiosError } from "axios"
 import { useRouter } from "next/navigation"
+import { ApiErrorResponse } from "src/shared/types/error"
 import { authApi } from "../api"
 
 export function useRegister() {
@@ -12,8 +14,8 @@ export function useRegister() {
     onSuccess: () => {
       router.push("/login")
     },
-    onError: (error) => {
-      console.error("Помилка реєстрації:", error)
+    onError: (error: AxiosError<ApiErrorResponse>) => {
+      console.error("Помилка реєстрації:", error.response?.data?.message)
     },
   })
 }
