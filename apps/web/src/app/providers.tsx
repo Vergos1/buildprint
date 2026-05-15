@@ -6,6 +6,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { SessionProvider } from "next-auth/react"
 import type { ReactNode } from "react"
 import { ThemeProvider } from "src/components"
 
@@ -40,9 +41,11 @@ function getQueryClient() {
 export const Providers = ({ children }: Readonly<{ children: ReactNode }>) => {
   const queryClient = getQueryClient()
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools />
-      <ThemeProvider>{children}</ThemeProvider>
-    </QueryClientProvider>
+    <SessionProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
+        <ThemeProvider>{children}</ThemeProvider>
+      </QueryClientProvider>
+    </SessionProvider>
   )
 }
