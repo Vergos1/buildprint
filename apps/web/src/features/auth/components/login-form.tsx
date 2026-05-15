@@ -16,9 +16,9 @@ import {
 } from "@workspace-components"
 import { appConfig } from "@workspace-config/app"
 import { cn } from "@workspace-lib"
+import { useSession } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
-import { Activity } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { links } from "src/shared/config"
 import { PrivacyBlock } from "../../../components/privacy-block"
@@ -29,7 +29,8 @@ export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const { login } = useAuth()
+  const { login, logout } = useAuth()
+  const { status } = useSession()
 
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -50,7 +51,7 @@ export function LoginForm({
   }
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className={cn("flex flex-col gap-5", className)} {...props}>
       <Card className="overflow-hidden p-0">
         <CardContent className="grid p-0 md:grid-cols-2">
           <form className="p-6 md:p-8" onSubmit={form.handleSubmit(onSubmit)}>
@@ -72,7 +73,7 @@ export function LoginForm({
                 name="email"
                 control={form.control}
                 render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
+                  <Field>
                     <FieldLabel htmlFor={field.name}>
                       Електронна пошта
                     </FieldLabel>
@@ -94,7 +95,7 @@ export function LoginForm({
                 name="password"
                 control={form.control}
                 render={({ field, fieldState }) => (
-                  <Field data-invalid={fieldState.invalid}>
+                  <Field>
                     <FieldLabel htmlFor={field.name}>Пароль</FieldLabel>
                     <Input
                       {...field}
@@ -112,6 +113,11 @@ export function LoginForm({
               />
               <Field>
                 <Button type="submit">Увійти</Button>
+                {status === "authenticated" && (
+                  <Button type="button" onClick={logout}>
+                    Вийти
+                  </Button>
+                )}
               </Field>
               <FieldDescription className="text-center">
                 Ще не зареєстровані?{" "}
