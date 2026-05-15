@@ -11,7 +11,7 @@ export function useLogin(): LoginFn {
   const router = useRouter()
 
   const login = async (dto: LoginDto): Promise<void> => {
-    authService.login(dto)
+    await authService.login(dto)
 
     router.push("/")
     router.refresh()
