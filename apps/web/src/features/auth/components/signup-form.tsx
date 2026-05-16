@@ -97,6 +97,7 @@ export function SignupForm({
                       type={field.name}
                       aria-invalid={fieldState.invalid}
                       placeholder="ivan@gmail.com"
+                      autoComplete="email"
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
