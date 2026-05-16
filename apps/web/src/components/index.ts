@@ -1,2 +1,2 @@
 export * from "./privacy-block"
-export * from "./theme-provider"
+export * from "./providers"
