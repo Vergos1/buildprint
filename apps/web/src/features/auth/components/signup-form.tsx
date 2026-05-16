@@ -94,6 +94,7 @@ export function SignupForm({
                       {...field}
                       id={field.name}
                       name={field.name}
+                      type={field.name}
                       aria-invalid={fieldState.invalid}
                       placeholder="ivan@gmail.com"
                     />
