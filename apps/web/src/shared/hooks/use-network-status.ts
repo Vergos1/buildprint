@@ -5,8 +5,11 @@ const useNetworkStatus = () => {
 
   const updateNetworkStatus = () => {
     setOnline(navigator.onLine)
-    console.log(isOnline)
   }
+
+  useEffect(() => {
+    updateNetworkStatus()
+  }, [])
 
   useEffect(() => {
     window.addEventListener("load", updateNetworkStatus)
