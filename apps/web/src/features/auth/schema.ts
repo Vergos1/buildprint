@@ -7,8 +7,12 @@ import { z } from "zod"
  * const result = loginSchema.safeParse({ email: "ivan@gmail.com", password: "12345678" })
  */
 export const loginSchema = z.object({
-  email: z.string().min(1, "Введіть email").email("Невірний формат email"),
-  password: z.string().min(8, "Мінімум 8 символів"),
+  email: z
+    .string()
+    .nonempty("Введіть email")
+    .min(6, "Email має бути не менше 6 символів")
+    .email("Невірний формат email"),
+  password: z.string().nonempty("Введіть пароль").min(8, "Мінімум 8 символів"),
 })
 
 /**
@@ -32,14 +36,22 @@ export const registerSchema = z
      */
     nickname: z
       .string()
+      .nonempty("Введіть нікнейм")
       .min(3, "Нікнейм має бути не менше 3 символів")
       .max(30, "Нікнейм має бути не більше 30 символів")
       .regex(
         /^[a-zA-Z0-9][a-zA-Z0-9_-]*[a-zA-Z0-9]$/,
         "Тільки латиниця, цифри, - та _ (не на початку/кінці)"
       ),
-    email: z.string().min(1, "Введіть email").email("Невірний формат email"),
-    password: z.string().min(8, "Мінімум 8 символів"),
+    email: z
+      .string()
+      .nonempty("Введіть email")
+      .min(6, "Email має бути не менше 6 символів")
+      .email("Невірний формат email"),
+    password: z
+      .string()
+      .nonempty("Введіть пароль")
+      .min(8, "Мінімум 8 символів"),
     confirmPassword: z.string().min(1, "Повторіть пароль"),
   })
   .refine((data) => data.password === data.confirmPassword, {
