@@ -84,6 +84,7 @@ export function LoginForm({
                       name={field.name}
                       aria-invalid={fieldState.invalid}
                       placeholder="ivan@gmail.com"
+                      type={field.name}
                       autoFocus
                     />
                     {fieldState.invalid && (
