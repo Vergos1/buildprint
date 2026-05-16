@@ -11,7 +11,6 @@ import * as bcrypt from 'bcrypt';
 import { ROUNDS_OF_HASHING } from '../common/constants/auth.constants';
 import { CreateUserDto } from '../common/dto/create-user.dto';
 import { UserPublicEntity } from '../users/entities/user-public.entity';
-import { UserEntity } from '../users/entities/user.entity';
 import { PrismaService } from './../prisma/prisma.service';
 import { AuthDto } from './dto/auth.dto';
 import { AuthEntity } from './entity/auth.entity';
