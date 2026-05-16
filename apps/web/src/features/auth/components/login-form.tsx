@@ -113,7 +113,9 @@ export function LoginForm({
                 )}
               />
               <Field>
-                <Button type="submit">Увійти</Button>
+                <Button type="submit" disabled={form.formState.isSubmitting}>
+                  {form.formState.isSubmitting ? "Завантаження..." : "Увійти"}
+                </Button>
                 {status === "authenticated" && (
                   <Button type="button" onClick={logout}>
                     Вийти
