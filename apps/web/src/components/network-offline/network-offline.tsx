@@ -1,14 +1,13 @@
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Separator,
-} from "@workspace-components"
+import { Button, Card, CardContent, Separator } from "@workspace-components"
 import { PlugZap, RefreshCw, Router, Settings, WifiOff, X } from "lucide-react"
-import { useState } from "react"
+import { useRetry } from "./use-retry"
+
+export const formatLastRetryTime = (date: Date) =>
+  date.toLocaleTimeString("uk-UA", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  })
 
 const reasons = [
   {
@@ -29,17 +28,7 @@ const reasons = [
 ]
 
 export const NetworkOffline = () => {
-  const [isChecking, setIsChecking] = useState(false)
-  const [lastCheck, setLastCheck] = useState<Date>(new Date())
-
-  const handleRetry = async () => {
-    setIsChecking(true)
-    await new Promise((r) => setTimeout(r, 2000))
-    setLastCheck(new Date())
-    setIsChecking(false)
-    window.location.reload()
-  }
-
+  const { retry, lastCheck, isChecking } = useRetry()
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-6">
       <div className="flex w-full max-w-sm flex-col items-center text-center">
@@ -80,18 +69,13 @@ export const NetworkOffline = () => {
           </CardContent>
         </Card>
 
-        <Button className="w-full" disabled={isChecking} onClick={handleRetry}>
+        <Button className="w-full" disabled={isChecking} onClick={retry}>
           <RefreshCw className={isChecking ? "animate-spin" : ""} />
           {isChecking ? "Перевіряємо..." : "Спробувати знову"}
         </Button>
 
         <p className="mt-4 text-xs text-muted-foreground">
-          Остання перевірка:{" "}
-          {lastCheck.toLocaleTimeString("uk-UA", {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-          })}
+          Остання перевірка: {formatLastRetryTime(lastCheck)}
         </p>
       </div>
     </div>
