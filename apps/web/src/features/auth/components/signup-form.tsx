@@ -74,6 +74,7 @@ export function SignupForm({
                       type={field.name}
                       aria-invalid={fieldState.invalid}
                       placeholder="Nickname"
+                      autoFocus
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
