@@ -20,7 +20,7 @@ import { Controller, useForm } from "react-hook-form"
 import { links } from "src/shared/config"
 import { PrivacyBlock } from "../../../components/privacy-block"
 import { useRegister } from "../hooks/use-register"
-import { RegisterSchema, registerSchema } from "../schema"
+import { type RegisterSchema, registerSchema } from "../schema"
 
 export function SignupForm({
   className,
