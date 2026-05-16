@@ -14,7 +14,7 @@ export class CreateUserDto {
 
   @IsString({ message: 'Пароль має бути рядком' })
   @IsNotEmpty({ message: 'Пароль не може бути порожнім' })
-  @MinLength(6, { message: 'Пароль має містити мінімум 6 символів' })
-  @ApiProperty({ example: '123456', minLength: 6 })
+  @MinLength(6, { message: 'Пароль має містити мінімум 8 символів' })
+  @ApiProperty({ example: '123456', minLength: 8 })
   password!: string;
 }
