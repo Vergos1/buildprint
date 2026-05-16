@@ -31,7 +31,7 @@ export function SignupForm({
   const form = useForm<RegisterSchema>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      name: "",
+      nickname: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -39,8 +39,8 @@ export function SignupForm({
   })
 
   const onSubmit = async (dto: RegisterSchema) => {
-    const { name, email, password } = dto
-    await register({ name, email, password })
+    const { nickname, email, password } = dto
+    await register({ nickname, email, password })
   }
 
   return (
@@ -63,17 +63,17 @@ export function SignupForm({
               )}
 
               <Controller
-                name="name"
+                name="nickname"
                 control={form.control}
                 render={({ field, fieldState }) => (
                   <Field>
-                    <FieldLabel htmlFor={field.name}>Ім&apos;я</FieldLabel>
+                    <FieldLabel htmlFor={field.name}>Нікнейм</FieldLabel>
                     <Input
                       {...field}
                       id={field.name}
                       type={field.name}
                       aria-invalid={fieldState.invalid}
-                      placeholder="Іван Петренко"
+                      placeholder="Nickname"
                     />{" "}
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />

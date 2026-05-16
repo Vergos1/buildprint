@@ -7,7 +7,7 @@ export const loginSchema = z.object({
 
 export const registerSchema = z
   .object({
-    name: z.string().min(1, "Введіть ім'я").max(30, "Максимум 30 символів"),
+    nickname: z.string().min(1, "Введіть ім'я").max(30, "Максимум 30 символів"),
     email: z.string().min(1, "Введіть email").email("Невірний формат email"),
     password: z.string().min(1, "Введіть пароль").min(8, "Мінімум 8 символів"),
     confirmPassword: z

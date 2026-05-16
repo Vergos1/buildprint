@@ -13,7 +13,7 @@ export class UserEntity {
   email!: string;
 
   @ApiProperty({ example: 'Ivan', nullable: true })
-  name!: string | null;
+  nickname!: string | null;
 
   @ApiProperty({ example: '2024-01-01T00:00:00.000Z' })
   createdAt!: Date;

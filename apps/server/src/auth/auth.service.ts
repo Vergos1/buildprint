@@ -53,7 +53,7 @@ export class AuthService {
       user: new UserPublicEntity({
         id: user.id,
         email: user.email,
-        name: user.name,
+        nickname: user.nickname,
         createdAt: user.createdAt,
       }),
     };

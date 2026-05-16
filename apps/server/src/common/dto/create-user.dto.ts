@@ -5,7 +5,7 @@ export class CreateUserDto {
   @IsString({ message: "Ім'я має бути рядком" })
   @IsNotEmpty({ message: "Ім'я не може бути порожнім" })
   @ApiProperty({ example: 'Іван' })
-  name!: string;
+  nickname!: string;
 
   @IsEmail({}, { message: 'Невірний формат email' })
   @IsNotEmpty({ message: 'Email не може бути порожнім' })

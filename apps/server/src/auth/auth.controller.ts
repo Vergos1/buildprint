@@ -36,7 +36,7 @@ export class AuthController {
   @ApiOperation({ summary: 'Реєстрація користувача' })
   @ApiConflictResponse({ description: 'Користувач вже зареєстрований' })
   @ApiBadRequestResponse({ description: 'Невірні дані' })
-  register(@Body() { name, email, password }: CreateUserDto) {
-    return this.authService.register({ name, email, password });
+  register(@Body() { nickname, email, password }: CreateUserDto) {
+    return this.authService.register({ nickname, email, password });
   }
 }

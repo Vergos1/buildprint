@@ -1,7 +1,7 @@
 export interface RegisterDto {
   email: string
   password: string
-  name: string
+  nickname: string
 }
 
 export interface LoginDto {
