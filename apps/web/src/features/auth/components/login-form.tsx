@@ -20,7 +20,7 @@ import Link from "next/link"
 import { Controller, useForm } from "react-hook-form"
 import { links } from "src/shared/config"
 import { PrivacyBlock } from "../../../components/privacy-block"
-import { useLogin, useLogout } from "../hooks"
+import { useLogin } from "../hooks"
 import type { LoginSchema } from "../schema"
 import { loginSchema } from "../schema"
 
