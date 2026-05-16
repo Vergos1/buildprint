@@ -15,7 +15,6 @@ import {
 } from "@workspace-components"
 import { appConfig } from "@workspace-config/app"
 import { cn } from "@workspace-lib"
-import { useSession } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import { Controller, useForm } from "react-hook-form"
@@ -30,8 +29,6 @@ export function LoginForm({
   ...props
 }: React.ComponentProps<"div">) {
   const login = useLogin()
-  const logout = useLogout()
-  const { status } = useSession()
 
   const form = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -119,11 +116,6 @@ export function LoginForm({
                 <Button type="submit" disabled={form.formState.isSubmitting}>
                   {form.formState.isSubmitting ? "Завантаження..." : "Увійти"}
                 </Button>
-                {status === "authenticated" && (
-                  <Button type="button" onClick={logout}>
-                    Вийти
-                  </Button>
-                )}
               </Field>
               <FieldDescription className="text-center">
                 Ще не зареєстровані?{" "}
