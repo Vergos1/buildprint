@@ -84,6 +84,7 @@ export function LoginForm({
                       name={field.name}
                       aria-invalid={fieldState.invalid}
                       placeholder="ivan@gmail.com"
+                      autoFocus
                     />
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
