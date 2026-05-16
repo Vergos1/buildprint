@@ -2,6 +2,7 @@
 import {
   BadRequestException,
   Injectable,
+  Logger,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -9,7 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ROUNDS_OF_HASHING } from '../common/constants/auth.constants';
 import { CreateUserDto } from '../common/dto/create-user.dto';
-import { UserEntity } from '../users/entities/user.entity';
+import { UserPublicEntity } from '../users/entities/user-public.entity';
 import { PrismaService } from './../prisma/prisma.service';
 import { AuthDto } from './dto/auth.dto';
 import { AuthEntity } from './entity/auth.entity';
@@ -27,6 +28,7 @@ export class AuthService {
       where: { email: authDto.email },
     });
 
+    Logger.log(user);
     // If no user is found, throw an error
     if (!user) {
       throw new NotFoundException(
@@ -48,11 +50,16 @@ export class AuthService {
     // Step 3: Generate a JWT token containing the user's ID and return it
     return {
       accessToken: this.jwtService.sign({ userId: user.id }),
-      user: new UserEntity(user),
+      user: new UserPublicEntity({
+        id: user.id,
+        email: user.email,
+        nickname: user.nickname,
+        createdAt: user.createdAt,
+      }),
     };
   }
 
-  async register(createUserDto: CreateUserDto): Promise<AuthEntity> {
+  async register(createUserDto: CreateUserDto): Promise<void> {
     const existingUser = await this.prisma.user.findUnique({
       where: { email: createUserDto.email },
     });
@@ -66,16 +73,11 @@ export class AuthService {
       ROUNDS_OF_HASHING,
     );
 
-    const user = await this.prisma.user.create({
+    await this.prisma.user.create({
       data: {
         ...createUserDto,
         password: hashedPassword,
       },
     });
-
-    return {
-      accessToken: this.jwtService.sign({ userId: user.id }),
-      user: new UserEntity(user),
-    };
   }
 }

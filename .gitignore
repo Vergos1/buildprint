@@ -27,6 +27,8 @@ out/
 build
 dist
 
+# Docs
+ARCHITECTURE_FEATURE_SHARED_EN.md
 
 # Debug
 npm-debug.log*

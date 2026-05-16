@@ -5,7 +5,6 @@ import {
   ApiBadRequestResponse,
   ApiBody,
   ApiConflictResponse,
-  ApiCreatedResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiOperation,
@@ -35,10 +34,9 @@ export class AuthController {
 
   @Post('register')
   @ApiOperation({ summary: 'Реєстрація користувача' })
-  @ApiCreatedResponse({ type: AuthEntity })
   @ApiConflictResponse({ description: 'Користувач вже зареєстрований' })
   @ApiBadRequestResponse({ description: 'Невірні дані' })
-  register(@Body() { name, email, password }: CreateUserDto) {
-    return this.authService.register({ name, email, password });
+  register(@Body() { nickname, email, password }: CreateUserDto) {
+    return this.authService.register({ nickname, email, password });
   }
 }

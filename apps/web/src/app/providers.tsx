@@ -1,12 +1,13 @@
 "use client"
 
-import { ThemeProvider } from "@components"
+import { NetworkProvider, ThemeProvider } from "@components/providers"
 import {
   environmentManager,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { SessionProvider } from "next-auth/react"
 import type { ReactNode } from "react"
 
 function makeQueryClient() {
@@ -40,9 +41,13 @@ function getQueryClient() {
 export const Providers = ({ children }: Readonly<{ children: ReactNode }>) => {
   const queryClient = getQueryClient()
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools />
-      <ThemeProvider>{children}</ThemeProvider>
-    </QueryClientProvider>
+    <SessionProvider>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
+        <ThemeProvider>
+          <NetworkProvider>{children}</NetworkProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </SessionProvider>
   )
 }
