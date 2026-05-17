@@ -1,5 +1,8 @@
 "use client"
 
+import { useLogout } from "@features/auth/hooks"
+import type { SessionUser } from "@features/auth/types"
+import DefaultAvatar from "@public/auth/default-avatar.png"
 import { links } from "@shared-config"
 import {
   Avatar,
@@ -17,7 +20,6 @@ import {
 import {
   BadgeCheck,
   Bell,
-  ChevronsUpDown,
   Code2,
   CreditCard,
   LayoutDashboard,
@@ -28,17 +30,14 @@ import Link from "next/link"
 
 interface LandingHeaderProps {
   isLoggedIn?: boolean
-  user?: {
-    name: string
-    email: string
-    avatar?: string
-  }
+  user: SessionUser | undefined
 }
 
 export function LandingHeader({
   isLoggedIn = false,
   user,
 }: LandingHeaderProps) {
+  const logout = useLogout()
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/60 backdrop-blur-xl">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
@@ -91,9 +90,12 @@ export function LandingHeader({
                     className="h-8 w-8 rounded-full"
                   >
                     <Avatar className="h-7 w-7">
-                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarImage
+                        src={`https://ui-avatars.com/api/?name=${user.nickname}&background=random`}
+                        alt={user.nickname}
+                      />
                       <AvatarFallback className="text-xs">
-                        {user.name.slice(0, 2).toUpperCase()}
+                        {user.nickname.slice(0, 2).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
                   </Button>
@@ -106,14 +108,17 @@ export function LandingHeader({
                   <DropdownMenuLabel className="p-0 font-normal">
                     <div className="flex items-center gap-2 px-2 py-1.5 text-left text-sm">
                       <Avatar className="h-8 w-8">
-                        <AvatarImage src={user.avatar} alt={user.name} />
+                        <AvatarImage
+                          src={`https://ui-avatars.com/api/?name=${user.nickname}&background=random`}
+                          alt={user.nickname}
+                        />
                         <AvatarFallback className="text-xs">
-                          {user.name.slice(0, 2).toUpperCase()}
+                          {user.nickname.slice(0, 2).toUpperCase()}
                         </AvatarFallback>
                       </Avatar>
                       <div className="grid flex-1 text-left text-sm leading-tight">
                         <span className="truncate font-medium">
-                          {user.name}
+                          {user.nickname}
                         </span>
                         <span className="truncate text-xs text-muted-foreground">
                           {user.email}
@@ -150,7 +155,7 @@ export function LandingHeader({
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={logout}>
                     <LogOut className="mr-2 h-4 w-4" />
                     Log out
                   </DropdownMenuItem>
