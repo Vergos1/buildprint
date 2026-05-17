@@ -69,7 +69,7 @@ export default async function Page() {
       <LandingHeader isLoggedIn={!!session} user={session?.user} />
 
       {/* Hero Section */}
-      <section className="relative m-auto flex max-w-7xl flex-1 flex-col items-center justify-center overflow-hidden px-4 pt-12 pb-24">
+      <section className="relative m-auto flex max-w-full flex-1 flex-col items-center justify-center overflow-hidden px-4 pt-12 pb-24 md:max-w-7xl">
         {/* Background Effects */}
         <div className="bg-grid bg-grid-fade absolute inset-0" />
         <div className="glow absolute inset-0" />
@@ -125,7 +125,7 @@ export default async function Page() {
           </div>
 
           {/* Code Preview */}
-          <div className="mt-20 w-full max-w-4xl">
+          <div className="mt-20 w-full max-w-full overflow-hidden md:max-w-4xl">
             <div className="overflow-hidden rounded-xl border border-border/50 bg-card/80 shadow-2xl shadow-black/50 backdrop-blur-sm">
               <div className="flex items-center gap-2 border-b border-border/50 px-4 py-3">
                 <div className="flex gap-2">
@@ -137,16 +137,16 @@ export default async function Page() {
                   useFetch.ts
                 </span>
                 <div className="ml-auto flex items-center gap-2">
-                  <span className="rounded bg-secondary/50 px-2 py-0.5 text-xs text-muted-foreground">
+                  <span className="rounded bg-secondary/50 px-2 py-0.5 text-[10px] text-muted-foreground sm:text-xs">
                     hooks
                   </span>
-                  <span className="rounded bg-secondary/50 px-2 py-0.5 text-xs text-muted-foreground">
+                  <span className="rounded bg-secondary/50 px-2 py-0.5 text-[10px] text-muted-foreground sm:text-xs">
                     api
                   </span>
                 </div>
               </div>
               <div className="p-6">
-                <pre className="overflow-x-auto text-left font-mono text-sm leading-relaxed">
+                <pre className="overflow-x-auto text-left font-mono text-[10px] leading-relaxed sm:text-xs">
                   <code>
                     <span className="text-muted-foreground/60">
                       {"// Custom fetch hook with error handling"}
