@@ -34,7 +34,7 @@ export default function RootLayout({
         dmSansHeading.variable
       )}
     >
-      <body>
+      <body className="overflow-x-hidden">
         <Providers>{children}</Providers>
       </body>
     </html>
