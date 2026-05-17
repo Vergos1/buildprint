@@ -1,5 +1,6 @@
 export const links = {
   home: "/",
   login: "/login",
-  signup: "/signup",
+  register: "/register",
+  dashboard: "/dashboard",
 } as const
