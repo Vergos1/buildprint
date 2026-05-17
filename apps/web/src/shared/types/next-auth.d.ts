@@ -4,7 +4,7 @@ declare module "next-auth" {
   interface User {
     id: string
     email: string
-    name: string | null
+    nickname: string
     accessToken: string
   }
 
@@ -13,7 +13,7 @@ declare module "next-auth" {
     user: {
       id: string
       email: string
-      name: string | null
+      nickname: string
     }
   }
 }

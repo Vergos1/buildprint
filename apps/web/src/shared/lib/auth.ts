@@ -1,3 +1,4 @@
+import { SessionUser } from "@features/auth/types"
 import { AuthResponse, AuthUser } from "@workspace-types/auth"
 import axios from "axios"
 import NextAuth from "next-auth"
@@ -28,7 +29,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         return {
           id: data.user.id,
           email: data.user.email,
-          name: data.user.name,
+          nickname: data.user.nickname,
           accessToken: data.accessToken,
         }
       },
@@ -43,7 +44,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.user = {
           id: user.id,
           email: user.email,
-          name: user.name,
+          nickname: user.nickname,
         }
       }
 
@@ -56,7 +57,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         accessToken: token.accessToken as string,
         user: {
           ...session.user,
-          ...(token.user as { id: string; email: string; name: string | null }),
+          ...(token.user as SessionUser),
         },
       }
     },
