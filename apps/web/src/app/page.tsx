@@ -1,5 +1,6 @@
 import { LandingHeader } from "@components"
 import { links } from "@shared-config"
+import { auth } from "@shared-lib"
 import { Button } from "@workspace-components"
 import {
   ArrowRight,
@@ -60,17 +61,12 @@ function StepCard({
   )
 }
 
-const isLoggedIn = false
-const user = {
-  name: "John Doe",
-  email: "john@example.com",
-  avatar: "/avatars/user.jpg",
-}
+export default async function Page() {
+  const session = await auth()
 
-export default function Page() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <LandingHeader isLoggedIn={isLoggedIn} user={user} />
+      <LandingHeader isLoggedIn={!!session} user={session?.user} />
 
       {/* Hero Section */}
       <section className="relative m-auto flex max-w-7xl flex-1 flex-col items-center justify-center overflow-hidden px-4 py-32">
