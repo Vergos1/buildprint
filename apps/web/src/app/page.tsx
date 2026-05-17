@@ -79,32 +79,32 @@ export default async function Page() {
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/50 bg-secondary/30 px-4 py-2 text-sm backdrop-blur-sm">
             <Sparkles className="h-4 w-4 text-muted-foreground" />
             <span className="text-muted-foreground">
-              Your personal code library
+              Твоя особиста база рішень
             </span>
           </div>
 
           {/* Main Heading */}
           <h1 className="max-w-4xl text-5xl font-bold tracking-tight text-balance sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
-              Stop rewriting
+              Припини писати
             </span>
             <br />
             <span className="bg-gradient-to-b from-foreground/90 to-foreground/50 bg-clip-text text-transparent">
-              the same code.
+              одне й те саме.
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
-            BuildPrint is your developer knowledge base. Save code solutions
-            with context, organize with tags, and find them instantly.
+            BuildPrint — це твоя база знань розробника. Зберігай рішення з
+            контекстом, організовуй тегами, знаходь миттєво.
           </p>
 
           {/* CTA Buttons */}
           <div className="mt-12 flex flex-col gap-4 sm:flex-row">
             <Button size="lg" className="h-12 gap-2 px-8 text-base" asChild>
               <Link href={links.register}>
-                Get Started
+                Почати
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -114,7 +114,7 @@ export default async function Page() {
               className="h-12 px-8 text-base"
               asChild
             >
-              <Link href="#how-it-works">Learn More</Link>
+              <Link href="#how-it-works">Як це працює</Link>
             </Button>
           </div>
 
@@ -228,46 +228,46 @@ export default async function Page() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <p className="text-sm font-medium tracking-widest text-muted-foreground uppercase">
-              Features
+              Можливості
             </p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Everything you need
+              Все що тобі потрібно
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Not just snippets. Structured solutions with context you can
-              actually use.
+              Не просто сніпети. Структуровані рішення з контекстом, які ти
+              реально використаєш.
             </p>
           </div>
           <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <FeatureCard
               icon={<FolderOpen className="h-5 w-5" />}
-              title="Organized Prints"
-              description="Save code with descriptions explaining when and why to use it. Never lose context again."
+              title="Організовані Принти"
+              description="Зберігай код з описом — коли і чому використовувати. Більше ніякого «де я це бачив»."
             />
             <FeatureCard
               icon={<Tag className="h-5 w-5" />}
-              title="Smart Tags"
-              description="Categorize with tags like auth, forms, api. Find exactly what you need in seconds."
+              title="Розумні теги"
+              description="Категоризуй через теги: auth, forms, api. Знайди потрібне рішення за секунди."
             />
             <FeatureCard
               icon={<Search className="h-5 w-5" />}
-              title="Instant Search"
-              description="Search by title, description, or code content. Your solutions are always one search away."
+              title="Миттєвий пошук"
+              description="Шукай по назві, опису або коду. Твої рішення завжди під рукою."
             />
             <FeatureCard
               icon={<Copy className="h-5 w-5" />}
-              title="One-Click Copy"
-              description="Copy code instantly with a single click. No more hunting through old projects."
+              title="Копіювання в один клік"
+              description="Копіюй код миттєво. Більше не треба риться в старих проектах."
             />
             <FeatureCard
               icon={<Star className="h-5 w-5" />}
-              title="Favorites"
-              description="Star your most-used prints for quick access. Build your personal toolkit."
+              title="Обрані"
+              description="Зіркуй найпотрібніші принти для швидкого доступу. Збери свій особистий тулкіт."
             />
             <FeatureCard
               icon={<Zap className="h-5 w-5" />}
-              title="Lightning Fast"
-              description="Built for speed. Access your entire library in milliseconds."
+              title="Блискавично швидко"
+              description="Побудовано для швидкості. Весь твій архів рішень — за мілісекунди."
             />
           </div>
         </div>
@@ -281,30 +281,30 @@ export default async function Page() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <p className="text-sm font-medium tracking-widest text-muted-foreground uppercase">
-              How it works
+              Як це працює
             </p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Three simple steps
+              Три простих кроки
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-              Organize your developer knowledge in minutes
+              Організуй свої знання розробника за хвилини
             </p>
           </div>
           <div className="mt-20 grid gap-8 md:grid-cols-3">
             <StepCard
               number="01"
-              title="Save a Print"
-              description="Add your code with a title, description, and tags. Explain when and how to use it."
+              title="Збережи Принт"
+              description="Додай код з назвою, описом і тегами. Поясни коли і як це застосовувати — щоб через місяць не гадати."
             />
             <StepCard
               number="02"
-              title="Organize & Tag"
-              description="Use tags to categorize. Create collections for auth, forms, api patterns, and more."
+              title="Організуй і тегуй"
+              description="Використовуй теги для категоризації. Створюй колекції: auth, forms, api-патерни і більше."
             />
             <StepCard
               number="03"
-              title="Find & Reuse"
-              description="Search or browse your prints. Copy code with one click and get back to building."
+              title="Знаходь і використовуй"
+              description="Шукай або переглядай принти. Копіюй код в один клік і повертайся до роботи."
             />
           </div>
         </div>
@@ -314,17 +314,18 @@ export default async function Page() {
       <section className="m-auto max-w-7xl border-t border-border/50 py-32">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Ready to build your
+            Готовий зібрати свою
             <br />
-            knowledge base?
+            базу знань?
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-            Stop losing your best solutions. Start building your library today.
+            Перестань втрачати найкращі рішення. Починай будувати свою
+            бібліотеку сьогодні.
           </p>
           <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Button size="lg" className="h-12 gap-2 px-8 text-base" asChild>
               <Link href={links.register}>
-                Get Started Free
+                Почати безкоштовно
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -342,7 +343,7 @@ export default async function Page() {
             <span className="text-sm font-medium">BuildPrint</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            Built for developers, by developers.
+            Зроблено розробниками для розробників.
           </p>
         </div>
       </footer>
