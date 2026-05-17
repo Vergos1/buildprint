@@ -69,7 +69,7 @@ export default async function Page() {
       <LandingHeader isLoggedIn={!!session} user={session?.user} />
 
       {/* Hero Section */}
-      <section className="relative m-auto flex max-w-7xl flex-1 flex-col items-center justify-center overflow-hidden px-4 py-32">
+      <section className="relative m-auto flex max-w-7xl flex-1 flex-col items-center justify-center overflow-hidden px-4 pt-12 pb-24">
         {/* Background Effects */}
         <div className="bg-grid bg-grid-fade absolute inset-0" />
         <div className="glow absolute inset-0" />
