@@ -2,7 +2,6 @@
 
 import { useLogout } from "@features/auth/hooks"
 import type { SessionUser } from "@features/auth/types"
-import DefaultAvatar from "@public/auth/default-avatar.png"
 import { links } from "@shared-config"
 import {
   Avatar,
@@ -38,6 +37,10 @@ export function LandingHeader({
   user,
 }: LandingHeaderProps) {
   const logout = useLogout()
+
+  const avatarLinkGenerator = (nickname: string) =>
+    `https://ui-avatars.com/api/?name=${nickname}&background=random&color=fff`
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/60 backdrop-blur-xl">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
@@ -91,7 +94,7 @@ export function LandingHeader({
                   >
                     <Avatar className="h-7 w-7">
                       <AvatarImage
-                        src={`https://ui-avatars.com/api/?name=${user.nickname}&background=random`}
+                        src={avatarLinkGenerator(user.nickname)}
                         alt={user.nickname}
                       />
                       <AvatarFallback className="text-xs">
@@ -109,7 +112,7 @@ export function LandingHeader({
                     <div className="flex items-center gap-2 px-2 py-1.5 text-left text-sm">
                       <Avatar className="h-8 w-8">
                         <AvatarImage
-                          src={`https://ui-avatars.com/api/?name=${user.nickname}&background=random`}
+                          src={avatarLinkGenerator(user.nickname)}
                           alt={user.nickname}
                         />
                         <AvatarFallback className="text-xs">

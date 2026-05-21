@@ -74,7 +74,7 @@ export default async function Page() {
         <div className="bg-grid bg-grid-fade absolute inset-0" />
         <div className="glow absolute inset-0" />
 
-        <div className="relative z-10 flex flex-col items-center text-center">
+        <div className="relative z-10 flex max-w-full flex-col items-center text-center">
           {/* Badge */}
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border/50 bg-secondary/30 px-4 py-2 text-sm backdrop-blur-sm">
             <Sparkles className="h-4 w-4 text-muted-foreground" />
@@ -84,18 +84,18 @@ export default async function Page() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="max-w-4xl text-5xl font-bold tracking-tight text-balance sm:text-6xl md:text-7xl lg:text-8xl">
-            <span className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
+          <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-balance sm:text-6xl md:text-7xl lg:text-8xl">
+            <span className="bg-linear-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
               Припини писати
             </span>
             <br />
-            <span className="bg-gradient-to-b from-foreground/90 to-foreground/50 bg-clip-text text-transparent">
+            <span className="bg-linear-to-b from-foreground/90 to-foreground/50 bg-clip-text text-transparent">
               одне й те саме.
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
+          <p className="mt-8 max-w-full text-sm leading-relaxed text-pretty text-muted-foreground sm:max-w-2xl sm:text-xl">
             BuildPrint — це твоя база знань розробника. Зберігай рішення з
             контекстом, організовуй тегами, знаходь миттєво.
           </p>
