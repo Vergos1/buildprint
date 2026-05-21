@@ -8,3 +8,9 @@ export interface LoginDto {
   email: string
   password: string
 }
+
+export interface SessionUser {
+  id: string
+  email: string
+  nickname: string
+}

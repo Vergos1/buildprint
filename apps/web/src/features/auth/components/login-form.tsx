@@ -119,7 +119,7 @@ export function LoginForm({
               </Field>
               <FieldDescription className="text-center">
                 Ще не зареєстровані?{" "}
-                <Link href={links.signup}>Створити акаунт</Link>
+                <Link href={links.register}>Створити акаунт</Link>
               </FieldDescription>
             </FieldGroup>
           </form>

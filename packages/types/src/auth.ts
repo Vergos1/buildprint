@@ -1,14 +1,14 @@
 export interface UserPublic {
   id: string
   email: string
-  name: string | null
+  nickname: string
   createdAt?: string
 }
 
 export interface AuthUser {
   id: string
   email: string
-  name: string | null
+  nickname: string
   accessToken: string
 }
 
